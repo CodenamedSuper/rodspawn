@@ -1,6 +1,36 @@
 {
   "variants": {
-    "ominous=false,nether_spawner_state=active": {
+    "ominous=false,nether_spawner_state=active,health=10": {
+      "model": "rodspawn:block/nether_spawner_active10"
+    },
+    "ominous=false,nether_spawner_state=active,health=9": {
+      "model": "rodspawn:block/nether_spawner_active9"
+    },
+    "ominous=false,nether_spawner_state=active,health=8": {
+      "model": "rodspawn:block/nether_spawner_active8"
+    },
+    "ominous=false,nether_spawner_state=active,health=7": {
+      "model": "rodspawn:block/nether_spawner_active7"
+    },
+    "ominous=false,nether_spawner_state=active,health=6": {
+      "model": "rodspawn:block/nether_spawner_active6"
+    },
+    "ominous=false,nether_spawner_state=active,health=5": {
+      "model": "rodspawn:block/nether_spawner_active5"
+    },
+    "ominous=false,nether_spawner_state=active,health=4": {
+      "model": "rodspawn:block/nether_spawner_active4"
+    },
+    "ominous=false,nether_spawner_state=active,health=3": {
+      "model": "rodspawn:block/nether_spawner_active1"
+    },
+    "ominous=false,nether_spawner_state=active,health=2": {
+      "model": "rodspawn:block/nether_spawner_active2"
+    },
+    "ominous=false,nether_spawner_state=active,health=1": {
+      "model": "rodspawn:block/nether_spawner_active1"
+    },
+    "ominous=false,nether_spawner_state=active,health=0": {
       "model": "rodspawn:block/nether_spawner_active"
     },
     "ominous=false,nether_spawner_state=cooldown": {
@@ -17,24 +47,6 @@
     },
     "ominous=false,nether_spawner_state=waiting_for_reward_ejection": {
       "model": "rodspawn:block/nether_spawner_active"
-    },
-    "ominous=true,nether_spawner_state=active": {
-      "model": "rodspawn:block/nether_spawner_active_ominous"
-    },
-    "ominous=true,nether_spawner_state=cooldown": {
-      "model": "rodspawn:block/nether_spawner_inactive_ominous"
-    },
-    "ominous=true,nether_spawner_state=ejecting_reward": {
-      "model": "rodspawn:block/nether_spawner_ejecting_reward_ominous"
-    },
-    "ominous=true,nether_spawner_state=inactive": {
-      "model": "rodspawn:block/nether_spawner_inactive_ominous"
-    },
-    "ominous=true,nether_spawner_state=waiting_for_players": {
-      "model": "rodspawn:block/nether_spawner_active_ominous"
-    },
-    "ominous=true,nether_spawner_state=waiting_for_reward_ejection": {
-      "model": "rodspawn:block/nether_spawner_active_ominous"
     }
   }
 }

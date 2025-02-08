@@ -3,11 +3,15 @@ package com.codenamed.rodspawn.block;
 import com.codenamed.rodspawn.block.entity.NetherSpawnerBlockEntity;
 import com.codenamed.rodspawn.block.entity.nether_spawner.NetherSpawnerState;
 import com.codenamed.rodspawn.registry.RodspawnBlockEntityTypes;
+import com.codenamed.rodspawn.registry.RodspawnBlocks;
 import com.codenamed.rodspawn.registry.RodspawnBlockstateProperties;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -25,10 +29,8 @@ import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -37,6 +39,9 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
     public static final MapCodec<NetherSpawnerBlock> CODEC = simpleCodec(NetherSpawnerBlock::new);
     public static final EnumProperty<NetherSpawnerState> STATE;
     public static final BooleanProperty OMINOUS;
+    public static final IntegerProperty HEALTH;
+
+    public static final int MAX_HEALTH = 15;
 
     public MapCodec<NetherSpawnerBlock> codec() {
         return CODEC;
@@ -44,11 +49,11 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
 
     public NetherSpawnerBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(STATE, NetherSpawnerState.INACTIVE)).setValue(OMINOUS, false));
+        this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(HEALTH, MAX_HEALTH).setValue(STATE, NetherSpawnerState.INACTIVE)).setValue(OMINOUS, false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{STATE, OMINOUS});
+        builder.add(new Property[]{STATE, OMINOUS, HEALTH});
     }
 
     protected RenderShape getRenderShape(BlockState p_312710_) {
@@ -58,6 +63,27 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
     @Nullable
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new NetherSpawnerBlockEntity(pos, state);
+    }
+
+    @Override
+    protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
+
+        if (projectile instanceof Arrow) {
+            damage(level, state, hit.getBlockPos(), 1);
+        }
+        else if ( projectile instanceof ThrownTrident) {
+            damage(level, state, hit.getBlockPos(), 2);
+
+        }
+        super.onProjectileHit(level, state, hit, projectile);
+    }
+
+    public void damage(Level level, BlockState state, BlockPos pos ,int dmg) {
+
+        if (state.getValue(HEALTH) < 1) return;
+
+        level.setBlock(pos, state.setValue(HEALTH, state.getValue(HEALTH ) - dmg), 2);
+
     }
 
     @Nullable
@@ -84,5 +110,6 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
     static {
         STATE = RodspawnBlockstateProperties.NETHER_SPAWNER_STATE;
         OMINOUS = BlockStateProperties.OMINOUS;
+        HEALTH = RodspawnBlockstateProperties.NETHER_SPAWNER_HEALTH;
     }
 }

@@ -7,6 +7,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+
+import com.codenamed.rodspawn.block.NetherSpawnerBlock;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -56,30 +58,31 @@ public enum NetherSpawnerState implements StringRepresentable {
     }
 
     NetherSpawnerState tickAndGetNext(BlockPos pos, NetherSpawner spawner, ServerLevel level) {
+        int health = level.getBlockState(pos).getValue(NetherSpawnerBlock.HEALTH);
         NetherSpawnerData netherspawnerdata = spawner.getData();
         NetherSpawnerConfig netherspawnerconfig = spawner.getConfig();
-        NetherSpawnerState var10000;
+        NetherSpawnerState state;
         switch (this.ordinal()) {
             case 0:
-                var10000 = netherspawnerdata.getOrCreateDisplayEntity(spawner, level, WAITING_FOR_PLAYERS) == null ? this : WAITING_FOR_PLAYERS;
+                state = netherspawnerdata.getOrCreateDisplayEntity(spawner, level, WAITING_FOR_PLAYERS) == null ? this : WAITING_FOR_PLAYERS;
                 break;
             case 1:
                 if (!spawner.canSpawnInLevel(level)) {
                     netherspawnerdata.reset();
-                    var10000 = this;
+                    state = this;
                 } else if (!netherspawnerdata.hasMobToSpawn(spawner, level.random)) {
-                    var10000 = INACTIVE;
+                    state = INACTIVE;
                 } else {
                     netherspawnerdata.tryDetectPlayers(level, pos, spawner);
-                    var10000 = netherspawnerdata.detectedPlayers.isEmpty() ? this : ACTIVE;
+                    state = netherspawnerdata.detectedPlayers.isEmpty() ? this : ACTIVE;
                 }
                 break;
             case 2:
                 if (!spawner.canSpawnInLevel(level)) {
                     netherspawnerdata.reset();
-                    var10000 = WAITING_FOR_PLAYERS;
+                    state = WAITING_FOR_PLAYERS;
                 } else if (!netherspawnerdata.hasMobToSpawn(spawner, level.random)) {
-                    var10000 = INACTIVE;
+                    state = INACTIVE;
                 } else {
                     int i = netherspawnerdata.countAdditionalPlayers(pos);
                     netherspawnerdata.tryDetectPlayers(level, pos, spawner);
@@ -87,15 +90,15 @@ public enum NetherSpawnerState implements StringRepresentable {
                         this.spawnOminousOminousItemSpawner(level, pos, spawner);
                     }
 
-                    if (netherspawnerdata.hasFinishedSpawningAllMobs(netherspawnerconfig, i)) {
-                        if (netherspawnerdata.haveAllCurrentMobsDied()) {
-                            netherspawnerdata.cooldownEndsAt = level.getGameTime() + (long)spawner.getTargetCooldownLength();
-                            netherspawnerdata.totalMobsSpawned = 0;
-                            netherspawnerdata.nextMobSpawnsAt = 0L;
-                            var10000 = WAITING_FOR_REWARD_EJECTION;
-                            break;
-                        }
-                    } else if (netherspawnerdata.isReadyToSpawnNextMob(level, netherspawnerconfig, i)) {
+                    if (health < 1) {
+                        netherspawnerdata.cooldownEndsAt = level.getGameTime() + (long)spawner.getTargetCooldownLength();
+                        netherspawnerdata.totalMobsSpawned = 0;
+                        netherspawnerdata.nextMobSpawnsAt = 0L;
+                        state = WAITING_FOR_REWARD_EJECTION;
+                        break;
+
+                    }
+                    else if (netherspawnerdata.isReadyToSpawnNextMob(level, netherspawnerconfig, i)) {
                         spawner.spawnMob(level, pos).ifPresent((p_340800_) -> {
                             netherspawnerdata.currentMobs.add(p_340800_);
                             ++netherspawnerdata.totalMobsSpawned;
@@ -107,24 +110,24 @@ public enum NetherSpawnerState implements StringRepresentable {
                         });
                     }
 
-                    var10000 = this;
+                    state = this;
                 }
                 break;
             case 3:
                 if (netherspawnerdata.isReadyToOpenShutter(level, 40.0F, spawner.getTargetCooldownLength())) {
                     level.playSound((Player)null, pos, SoundEvents.TRIAL_SPAWNER_OPEN_SHUTTER, SoundSource.BLOCKS);
-                    var10000 = EJECTING_REWARD;
+                    state = EJECTING_REWARD;
                 } else {
-                    var10000 = this;
+                    state = this;
                 }
                 break;
             case 4:
                 if (!netherspawnerdata.isReadyToEjectItems(level, (float)TIME_BETWEEN_EACH_EJECTION, spawner.getTargetCooldownLength())) {
-                    var10000 = this;
+                    state = this;
                 } else if (netherspawnerdata.detectedPlayers.isEmpty()) {
                     level.playSound((Player)null, pos, SoundEvents.TRIAL_SPAWNER_CLOSE_SHUTTER, SoundSource.BLOCKS);
                     netherspawnerdata.ejectingLootTable = Optional.empty();
-                    var10000 = COOLDOWN;
+                    state = COOLDOWN;
                 } else {
                     if (netherspawnerdata.ejectingLootTable.isEmpty()) {
                         netherspawnerdata.ejectingLootTable = netherspawnerconfig.lootTablesToEject().getRandomValue(level.getRandom());
@@ -134,7 +137,7 @@ public enum NetherSpawnerState implements StringRepresentable {
                         spawner.ejectReward(level, pos, p_335304_);
                     });
                     netherspawnerdata.detectedPlayers.remove(netherspawnerdata.detectedPlayers.iterator().next());
-                    var10000 = this;
+                    state = this;
                 }
                 break;
             case 5:
@@ -142,20 +145,21 @@ public enum NetherSpawnerState implements StringRepresentable {
                 if (!netherspawnerdata.detectedPlayers.isEmpty()) {
                     netherspawnerdata.totalMobsSpawned = 0;
                     netherspawnerdata.nextMobSpawnsAt = 0L;
-                    var10000 = ACTIVE;
+                    state = ACTIVE;
                 } else if (netherspawnerdata.isCooldownFinished(level)) {
                     spawner.removeOminous(level, pos);
                     netherspawnerdata.reset();
-                    var10000 = WAITING_FOR_PLAYERS;
+                    level.setBlock(pos, level.getBlockState(pos).setValue(NetherSpawnerBlock.HEALTH, NetherSpawnerBlock.MAX_HEALTH), 2);
+                    state = WAITING_FOR_PLAYERS;
                 } else {
-                    var10000 = this;
+                    state = this;
                 }
                 break;
             default:
                 throw new MatchException((String)null, (Throwable)null);
         }
 
-        return var10000;
+        return state;
     }
 
     private void spawnOminousOminousItemSpawner(ServerLevel level, BlockPos pos, NetherSpawner spawner) {
