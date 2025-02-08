@@ -3,7 +3,7 @@
   "render_type": "minecraft:cutout",
   "textures": {
     "bottom": "rodspawn:block/nether_spawner_bottom",
-    "side": "rodspawn:block/nether_spawner_side_active",
+    "side": "rodspawn:block/nether_spawner_side_active2",
     "top": "rodspawn:block/nether_spawner_top_active"
   }
 }

@@ -79,6 +79,8 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
             damage(level, state, hit.getBlockPos(), 2);
 
         }
+
+
         super.onProjectileHit(level, state, hit, projectile);
     }
 
@@ -89,24 +91,24 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
         level.setBlock(pos, state.setValue(HEALTH, state.getValue(HEALTH ) - dmg), 2);
 
         RandomSource randomsource = level.getRandom();
-        level.playLocalSound(pos, SoundEvents.TRIAL_SPAWNER_FALL, SoundSource.BLOCKS, randomsource.nextFloat() * 0.25F + 0.75F, randomsource.nextFloat() + 0.5F, false);
+        level.playSound((Player)null, pos, SoundEvents.TRIAL_SPAWNER_FALL, SoundSource.BLOCKS, randomsource.nextFloat() + 0.75F, randomsource.nextFloat() + 0.5F);
 
     }
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> entityType) {
-        BlockEntityTicker var10000;
+        BlockEntityTicker ticker;
         if (level instanceof ServerLevel serverlevel) {
-            var10000 = createTickerHelper(entityType, RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), (p_337976_, p_337977_, p_337978_, p_337979_) -> {
+            ticker = createTickerHelper(entityType, RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), (p_337976_, p_337977_, p_337978_, p_337979_) -> {
                 p_337979_.getNetherSpawner().tickServer(serverlevel, p_337977_, (Boolean)p_337978_.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false));
             });
         } else {
-            var10000 = createTickerHelper(entityType, RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), (p_337980_, p_337981_, p_337982_, p_337983_) -> {
+            ticker = createTickerHelper(entityType, RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), (p_337980_, p_337981_, p_337982_, p_337983_) -> {
                 p_337983_.getNetherSpawner().tickClient(p_337980_, p_337981_, (Boolean)p_337982_.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false));
             });
         }
 
-        return var10000;
+        return ticker;
     }
 
     public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> components, TooltipFlag tooltipFlag) {
