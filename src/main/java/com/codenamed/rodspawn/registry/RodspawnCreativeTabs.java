@@ -22,6 +22,7 @@ public class RodspawnCreativeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(RodspawnBlocks.NETHER_SPAWNER);
+                        output.accept(RodspawnItems.NETHER_DUST);
 
                     }).build());
 

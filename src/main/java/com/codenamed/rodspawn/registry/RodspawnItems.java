@@ -10,8 +10,8 @@ public class RodspawnItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Rodspawn.MOD_ID);
 
-    //public static final DeferredItem<Item> NETHER_DUST = ITEMS.register("nether_dust", () ->
-    //        new Item(new Item.Properties()));
+    public static final DeferredItem<Item> NETHER_DUST = ITEMS.register("nether_dust", () ->
+            new Item(new Item.Properties()));
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

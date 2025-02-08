@@ -1,5 +1,6 @@
 package com.codenamed.rodspawn.block.entity.nether_spawner;
 
+import com.codenamed.rodspawn.registry.RodspawnBuiltInLootTables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
@@ -74,7 +75,7 @@ public record NetherSpawnerConfig(int spawnRange, float totalMobs, float simulta
     }
 
     static {
-        DEFAULT = new NetherSpawnerConfig(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, SimpleWeightedRandomList.empty(), (SimpleWeightedRandomList)SimpleWeightedRandomList.builder().add(BuiltInLootTables.SPAWNER_TRIAL_CHAMBER_CONSUMABLES).add(BuiltInLootTables.SPAWNER_TRIAL_CHAMBER_KEY).build(), BuiltInLootTables.SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS);
+        DEFAULT = new NetherSpawnerConfig(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, SimpleWeightedRandomList.empty(), (SimpleWeightedRandomList)SimpleWeightedRandomList.builder().add(RodspawnBuiltInLootTables.SPAWNER_CONSUMABLES).add(RodspawnBuiltInLootTables.SPAWNER_NETHER_FORTRESS_NETHER_DUST).build(), BuiltInLootTables.SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS);
         CODEC = RecordCodecBuilder.create((p_338041_) -> {
             return p_338041_.group(Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", DEFAULT.spawnRange).forGetter(NetherSpawnerConfig::spawnRange), Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs", DEFAULT.totalMobs).forGetter(NetherSpawnerConfig::totalMobs), Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs", DEFAULT.simultaneousMobs).forGetter(NetherSpawnerConfig::simultaneousMobs), Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs_added_per_player", DEFAULT.totalMobsAddedPerPlayer).forGetter(NetherSpawnerConfig::totalMobsAddedPerPlayer), Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs_added_per_player", DEFAULT.simultaneousMobsAddedPerPlayer).forGetter(NetherSpawnerConfig::simultaneousMobsAddedPerPlayer), Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("ticks_between_spawn", DEFAULT.ticksBetweenSpawn).forGetter(NetherSpawnerConfig::ticksBetweenSpawn), SpawnData.LIST_CODEC.lenientOptionalFieldOf("spawn_potentials", SimpleWeightedRandomList.empty()).forGetter(NetherSpawnerConfig::spawnPotentialsDefinition), SimpleWeightedRandomList.wrappedCodecAllowingEmpty(ResourceKey.codec(Registries.LOOT_TABLE)).lenientOptionalFieldOf("loot_tables_to_eject", DEFAULT.lootTablesToEject).forGetter(NetherSpawnerConfig::lootTablesToEject), ResourceKey.codec(Registries.LOOT_TABLE).lenientOptionalFieldOf("items_to_drop_when_ominous", DEFAULT.itemsToDropWhenOminous).forGetter(NetherSpawnerConfig::itemsToDropWhenOminous)).apply(p_338041_, NetherSpawnerConfig::new);
         });

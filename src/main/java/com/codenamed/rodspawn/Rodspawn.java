@@ -1,10 +1,7 @@
 package com.codenamed.rodspawn;
 
 
-import com.codenamed.rodspawn.registry.RodspawnBlockEntityTypes;
-import com.codenamed.rodspawn.registry.RodspawnBlocks;
-import com.codenamed.rodspawn.registry.RodspawnCreativeTabs;
-import com.codenamed.rodspawn.registry.RodspawnItems;
+import com.codenamed.rodspawn.registry.*;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
@@ -40,6 +37,7 @@ public class Rodspawn
         RodspawnBlocks.init(modEventBus);
         RodspawnBlockEntityTypes.init(modEventBus);
         RodspawnCreativeTabs.init(modEventBus);
+        RodspawnBuiltInLootTables.init();
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
