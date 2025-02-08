@@ -7,6 +7,7 @@ import com.codenamed.rodspawn.registry.RodspawnBlocks;
 import com.codenamed.rodspawn.registry.RodspawnBlockstateProperties;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -72,12 +73,13 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
     @Override
     protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
 
-        if (projectile instanceof Arrow) {
-            damage(level, state, hit.getBlockPos(), 1);
-        }
-        else if ( projectile instanceof ThrownTrident) {
-            damage(level, state, hit.getBlockPos(), 2);
+        if (state.getValue(STATE).name().equals(NetherSpawnerState.ACTIVE.name())) {
+            if (projectile instanceof Arrow) {
+                damage(level, state, hit.getBlockPos(), 1);
+            } else if (projectile instanceof ThrownTrident) {
+                damage(level, state, hit.getBlockPos(), 2);
 
+            }
         }
 
 
@@ -91,7 +93,12 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
         level.setBlock(pos, state.setValue(HEALTH, state.getValue(HEALTH ) - dmg), 2);
 
         RandomSource randomsource = level.getRandom();
-        level.playSound((Player)null, pos, SoundEvents.TRIAL_SPAWNER_FALL, SoundSource.BLOCKS, randomsource.nextFloat() + 0.75F, randomsource.nextFloat() + 0.5F);
+        level.playSound((Player)null, pos, SoundEvents.TRIAL_SPAWNER_HIT, SoundSource.BLOCKS, randomsource.nextFloat() + 0.75F, randomsource.nextFloat() + 0.5F);
+
+        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 0,0);
+        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX() + 1, pos.getY() + 1, pos.getZ(), 0, 0,0);
+        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1, 0, 0,0);
+        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX(), pos.getY() + 1, pos.getZ() + 1, 0, 0,0);
 
     }
 
