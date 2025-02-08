@@ -1,5 +1,20 @@
 {
   "variants": {
+    "ominous=false,nether_spawner_state=active,health=15": {
+      "model": "rodspawn:block/nether_spawner_active15"
+    },
+    "ominous=false,nether_spawner_state=active,health=14": {
+      "model": "rodspawn:block/nether_spawner_active14"
+    },
+    "ominous=false,nether_spawner_state=active,health=13": {
+      "model": "rodspawn:block/nether_spawner_active13"
+    },
+    "ominous=false,nether_spawner_state=active,health=12": {
+      "model": "rodspawn:block/nether_spawner_active12"
+    },
+    "ominous=false,nether_spawner_state=active,health=11": {
+      "model": "rodspawn:block/nether_spawner_active11"
+    },
     "ominous=false,nether_spawner_state=active,health=10": {
       "model": "rodspawn:block/nether_spawner_active10"
     },

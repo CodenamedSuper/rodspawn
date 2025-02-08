@@ -13,7 +13,7 @@ public class RodspawnBlockstateProperties {
 
     static {
         NETHER_SPAWNER_STATE = EnumProperty.create("nether_spawner_state", NetherSpawnerState.class);
-        NETHER_SPAWNER_HEALTH = IntegerProperty.create("health", 0, 10);
+        NETHER_SPAWNER_HEALTH = IntegerProperty.create("health", 0, 15);
 
     }
 }

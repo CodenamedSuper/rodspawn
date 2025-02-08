@@ -9,6 +9,10 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
@@ -83,6 +87,9 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
         if (state.getValue(HEALTH) < 1) return;
 
         level.setBlock(pos, state.setValue(HEALTH, state.getValue(HEALTH ) - dmg), 2);
+
+        RandomSource randomsource = level.getRandom();
+        level.playLocalSound(pos, SoundEvents.TRIAL_SPAWNER_FALL, SoundSource.BLOCKS, randomsource.nextFloat() * 0.25F + 0.75F, randomsource.nextFloat() + 0.5F, false);
 
     }
 
