@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "rodspawn:block/nether_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "rodspawn:block/nether_pillar"
+    },
+    "axis=z": {
+      "model": "rodspawn:block/nether_pillar_horizontal",
+      "x": 90
+    }
+  }
+}

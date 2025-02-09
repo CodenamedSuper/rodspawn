@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "rodspawn:block/nether_pillar_end",
+    "side": "rodspawn:block/nether_pillar"
+  }
+}

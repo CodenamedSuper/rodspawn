@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:nether_brick"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+
+  ],
+  "result": {
+    "count": 2,
+    "id": "rodspawn:nether_pillar"
+  }
+}

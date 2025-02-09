@@ -21,6 +21,8 @@ public class RodspawnCreativeTabs {
                     .title(Component.translatable("creativetab.rodspawn.rodspawn"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(RodspawnBlocks.NETHER_PILLAR);
+                        output.accept(RodspawnBlocks.GILDED_NETHER_BRICKS);
                         output.accept(RodspawnBlocks.NETHER_SPAWNER);
                         output.accept(RodspawnBlocks.BRAZIER);
                         output.accept(RodspawnItems.NETHER_DUST);

@@ -7,10 +7,7 @@ import com.codenamed.rodspawn.block.entity.brazier.BrazierState;
 import com.codenamed.rodspawn.block.entity.nether_spawner.NetherSpawnerState;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.VaultBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -25,6 +22,12 @@ import java.util.function.ToIntFunction;
 public class RodspawnBlocks {
         public static final DeferredRegister.Blocks BLOCKS =
                 DeferredRegister.createBlocks(Rodspawn.MOD_ID);
+
+        public static final DeferredBlock<Block> GILDED_NETHER_BRICKS = registerBlock("gilded_nether_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK)));
+
+        public static final DeferredBlock<Block> NETHER_PILLAR = registerBlock("nether_pillar",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
 
         public static final DeferredBlock<Block> NETHER_SPAWNER = registerBlock("nether_spawner",
                () -> new NetherSpawnerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TRIAL_SPAWNER).lightLevel((var) -> {
