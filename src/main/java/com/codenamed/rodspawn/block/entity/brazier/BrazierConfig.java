@@ -1,5 +1,6 @@
 package com.codenamed.rodspawn.block.entity.brazier;
 
+import com.codenamed.rodspawn.registry.RodspawnBuiltInLootTables;
 import com.codenamed.rodspawn.registry.RodspawnItems;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -22,7 +23,7 @@ public record BrazierConfig(ResourceKey<LootTable> lootTable, double activationR
     });
 
     private BrazierConfig() {
-        this(BuiltInLootTables.TRIAL_CHAMBERS_REWARD, 4.0, 4.5, new ItemStack(RodspawnItems.NETHER_DUST.get()), Optional.empty(), PlayerDetector.INCLUDING_CREATIVE_PLAYERS, EntitySelector.SELECT_FROM_LEVEL);
+        this(RodspawnBuiltInLootTables.NETHER_FORTRESS_REWARD, 4.0, 4.5, new ItemStack(RodspawnItems.NETHER_DUST.get()), Optional.empty(), PlayerDetector.INCLUDING_CREATIVE_PLAYERS, EntitySelector.SELECT_FROM_LEVEL);
     }
 
     public BrazierConfig(ResourceKey<LootTable> p_335999_, double p_323704_, double p_323499_, ItemStack p_323661_, Optional<ResourceKey<LootTable>> p_323481_) {

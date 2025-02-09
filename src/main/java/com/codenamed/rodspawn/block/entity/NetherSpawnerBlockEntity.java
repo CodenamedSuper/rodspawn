@@ -3,12 +3,11 @@ package com.codenamed.rodspawn.block.entity;
 import com.codenamed.rodspawn.block.NetherSpawnerBlock;
 import com.codenamed.rodspawn.block.entity.nether_spawner.NetherSpawner;
 import com.codenamed.rodspawn.block.entity.nether_spawner.NetherSpawnerState;
-import com.codenamed.rodspawn.registry.RodspawnBlockEntityTypes;
+import com.codenamed.rodspawn.registry.RodspawnBlockEntities;
 import com.codenamed.rodspawn.registry.RodspawnBlockstateProperties;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import java.util.Objects;
-import java.util.function.Consumer;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -20,11 +19,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.trialspawner.PlayerDetector;
 import net.minecraft.world.level.block.entity.trialspawner.PlayerDetector.EntitySelector;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.slf4j.Logger;
 
 public class NetherSpawnerBlockEntity extends BlockEntity implements Spawner, NetherSpawner.StateAccessor {
@@ -32,7 +29,7 @@ public class NetherSpawnerBlockEntity extends BlockEntity implements Spawner, Ne
     private NetherSpawner netherSpawner;
 
     public NetherSpawnerBlockEntity(BlockPos pos, BlockState state) {
-        super(RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), pos, state);
+        super(RodspawnBlockEntities.NETHER_SPAWNER.get(), pos, state);
         PlayerDetector playerdetector = PlayerDetector.NO_CREATIVE_PLAYERS;
         PlayerDetector.EntitySelector playerdetector$entityselector = EntitySelector.SELECT_FROM_LEVEL;
         this.netherSpawner = new NetherSpawner(this, playerdetector, playerdetector$entityselector);

@@ -2,8 +2,7 @@ package com.codenamed.rodspawn.block;
 
 import com.codenamed.rodspawn.block.entity.NetherSpawnerBlockEntity;
 import com.codenamed.rodspawn.block.entity.nether_spawner.NetherSpawnerState;
-import com.codenamed.rodspawn.registry.RodspawnBlockEntityTypes;
-import com.codenamed.rodspawn.registry.RodspawnBlocks;
+import com.codenamed.rodspawn.registry.RodspawnBlockEntities;
 import com.codenamed.rodspawn.registry.RodspawnBlockstateProperties;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -25,12 +24,9 @@ import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.TrialSpawnerBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.TrialSpawnerBlockEntity;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -106,11 +102,11 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> entityType) {
         BlockEntityTicker ticker;
         if (level instanceof ServerLevel serverlevel) {
-            ticker = createTickerHelper(entityType, RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), (p_337976_, p_337977_, p_337978_, p_337979_) -> {
+            ticker = createTickerHelper(entityType, RodspawnBlockEntities.NETHER_SPAWNER.get(), (p_337976_, p_337977_, p_337978_, p_337979_) -> {
                 p_337979_.getNetherSpawner().tickServer(serverlevel, p_337977_, (Boolean)p_337978_.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false));
             });
         } else {
-            ticker = createTickerHelper(entityType, RodspawnBlockEntityTypes.NETHER_SPAWNER.get(), (p_337980_, p_337981_, p_337982_, p_337983_) -> {
+            ticker = createTickerHelper(entityType, RodspawnBlockEntities.NETHER_SPAWNER.get(), (p_337980_, p_337981_, p_337982_, p_337983_) -> {
                 p_337983_.getNetherSpawner().tickClient(p_337980_, p_337981_, (Boolean)p_337982_.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false));
             });
         }

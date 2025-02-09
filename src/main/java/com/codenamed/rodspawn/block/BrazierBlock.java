@@ -2,7 +2,7 @@ package com.codenamed.rodspawn.block;
 
 import com.codenamed.rodspawn.block.entity.BrazierBlockEntity;
 import com.codenamed.rodspawn.block.entity.brazier.BrazierState;
-import com.codenamed.rodspawn.registry.RodspawnBlockEntityTypes;
+import com.codenamed.rodspawn.registry.RodspawnBlockEntities;
 import com.codenamed.rodspawn.registry.RodspawnBlockstateProperties;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
@@ -89,11 +89,11 @@ public class BrazierBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level p_323525_, BlockState p_324070_, BlockEntityType<T> p_323541_) {
         BlockEntityTicker var10000;
         if (p_323525_ instanceof ServerLevel serverlevel) {
-            var10000 = createTickerHelper(p_323541_, RodspawnBlockEntityTypes.BRAZIER.get(), (p_323957_, p_324322_, p_323828_, p_323769_) -> {
+            var10000 = createTickerHelper(p_323541_, RodspawnBlockEntities.BRAZIER.get(), (p_323957_, p_324322_, p_323828_, p_323769_) -> {
                 BrazierBlockEntity.Server.tick(serverlevel, p_324322_, p_323828_, p_323769_.getConfig(), p_323769_.getServerData(), p_323769_.getSharedData());
             });
         } else {
-            var10000 = createTickerHelper(p_323541_, RodspawnBlockEntityTypes.BRAZIER.get(), (p_324290_, p_323926_, p_323941_, p_323489_) -> {
+            var10000 = createTickerHelper(p_323541_, RodspawnBlockEntities.BRAZIER.get(), (p_324290_, p_323926_, p_323941_, p_323489_) -> {
                 BrazierBlockEntity.Client.tick(p_324290_, p_323926_, p_323941_, p_323489_.getClientData(), p_323489_.getSharedData());
             });
         }

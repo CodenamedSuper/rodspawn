@@ -19,7 +19,10 @@ public class RodspawnBuiltInLootTables {
 
     public static final ResourceKey<LootTable> SPAWNER_NETHER_FORTRESS_NETHER_DUST;
     public static final ResourceKey<LootTable> SPAWNER_CONSUMABLES;
-
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD;
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_COMMON;
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_RARE;
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_UNIQUE;
 
     private static ResourceKey<LootTable> register(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Rodspawn.MOD_ID, name));
@@ -32,7 +35,10 @@ public class RodspawnBuiltInLootTables {
     static {
         SPAWNER_NETHER_FORTRESS_NETHER_DUST = register("spawners/nether_fortress/nether_dust");
         SPAWNER_CONSUMABLES = register("spawners/nether_fortress/consumables");
-
+        NETHER_FORTRESS_REWARD = register("chests/nether_fortress/reward");
+        NETHER_FORTRESS_REWARD_COMMON = register("chests/nether_fortress/reward_common");
+        NETHER_FORTRESS_REWARD_RARE = register("chests/nether_fortress/reward_rare");
+        NETHER_FORTRESS_REWARD_UNIQUE = register("chests/nether_fortress/reward_unique");
     }
 
 }

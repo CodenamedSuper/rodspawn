@@ -5,7 +5,7 @@
 	"textures": {
 		"0": "rodspawn:block/brazier",
 		"1": "block/fire_0",
-		"particle": "rodspawn:block/brazier"
+		"particle": "rodspawn:block/particle/brazier"
 	},
 	"elements": [
 		{

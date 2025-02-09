@@ -35,7 +35,7 @@ public class Rodspawn
 
         RodspawnItems.init(modEventBus);
         RodspawnBlocks.init(modEventBus);
-        RodspawnBlockEntityTypes.init(modEventBus);
+        RodspawnBlockEntities.init(modEventBus);
         RodspawnCreativeTabs.init(modEventBus);
         RodspawnBuiltInLootTables.init();
 
