@@ -7,7 +7,7 @@
     "facing=north,brazier_state=inactive": {
       "model": "rodspawn:block/brazier"
     },
-    "facing=south,state=inactive": {
+    "facing=south,brazier_state=inactive": {
       "model": "rodspawn:block/brazier",
       "y": 180
     },

@@ -3,6 +3,7 @@ package com.codenamed.rodspawn.registry;
 import com.codenamed.rodspawn.Rodspawn;
 import com.codenamed.rodspawn.block.BrazierBlock;
 import com.codenamed.rodspawn.block.NetherSpawnerBlock;
+import com.codenamed.rodspawn.block.entity.brazier.BrazierState;
 import com.codenamed.rodspawn.block.entity.nether_spawner.NetherSpawnerState;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -31,8 +32,9 @@ public class RodspawnBlocks {
                })));
 
         public static final DeferredBlock<Block> BRAZIER = registerBlock("brazier", () ->
-                new BrazierBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS).noOcclusion().forceSolidOn()));
-
+                new BrazierBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS).noOcclusion().forceSolidOn().lightLevel((var) -> {
+                    return ((BrazierState) var.getValue(BrazierBlock.STATE)).lightLevel();
+                })));
 
 
         private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
