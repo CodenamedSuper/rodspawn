@@ -20,6 +20,7 @@ public class RodspawnBuiltInLootTables {
     public static final ResourceKey<LootTable> SPAWNER_NETHER_FORTRESS_NETHER_DUST;
     public static final ResourceKey<LootTable> SPAWNER_CONSUMABLES;
 
+
     private static ResourceKey<LootTable> register(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Rodspawn.MOD_ID, name));
     }
@@ -31,6 +32,7 @@ public class RodspawnBuiltInLootTables {
     static {
         SPAWNER_NETHER_FORTRESS_NETHER_DUST = register("spawners/nether_fortress/nether_dust");
         SPAWNER_CONSUMABLES = register("spawners/nether_fortress/consumables");
+
     }
 
 }
