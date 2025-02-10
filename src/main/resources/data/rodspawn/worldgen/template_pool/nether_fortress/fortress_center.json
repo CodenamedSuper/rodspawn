@@ -1,0 +1,14 @@
+{
+  "name": "rodspawn:nether_fortress/fortress_center",
+  "fallback": "minecraft:empty",
+  "elements": [{
+    "weight": 1,
+    "element": {
+      "location": "rodspawn:nether_fortress/fortress_center/center_room",
+      "processors": "minecraft:empty",
+      "projection": "rigid",
+      "element_type": "minecraft:single_pool_element"
+    }
+  }
+  ]
+}

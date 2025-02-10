@@ -1,0 +1,51 @@
+{
+  "name": "rodspawn:nether_fortress/fortress_corridor",
+  "fallback": "minecraft:empty",
+  "elements": [{
+    "weight": 1,
+    "element": {
+      "location": "rodspawn:nether_fortress/fortress_corridor/corridor_straight",
+      "processors": "minecraft:empty",
+      "projection": "rigid",
+      "element_type": "minecraft:single_pool_element"
+    }
+  },
+    {
+      "weight": 1,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_corridor/corridor_straight_special",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_corridor/corridor_straight_farm",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_corridor/corridor_branch",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_corridor/corridor_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
+
