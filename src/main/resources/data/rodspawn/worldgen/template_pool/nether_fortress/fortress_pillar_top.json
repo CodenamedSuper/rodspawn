@@ -1,0 +1,15 @@
+{
+  "name": "rodspawn:nether_fortress/fortress_pillar_top",
+  "fallback": "minecraft:empty",
+  "elements": [{
+    "weight": 1,
+    "element": {
+      "location": "rodspawn:nether_fortress/fortress_pillar/pillar_top",
+      "processors": "minecraft:empty",
+      "projection": "rigid",
+      "element_type": "minecraft:single_pool_element"
+    }
+  }
+  ]
+}
+
