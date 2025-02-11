@@ -5,7 +5,7 @@
   "size": 6,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": 55
+    "absolute": 60
   },
   "start_pool": "rodspawn:nether_fortress/fortress_center",
   "step": "surface_structures",

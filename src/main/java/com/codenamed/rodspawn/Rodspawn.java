@@ -33,6 +33,7 @@ public class Rodspawn
 
         NeoForge.EVENT_BUS.register(this);
 
+        RodspawnItemAbilities.init();
         RodspawnItems.init(modEventBus);
         RodspawnBlocks.init(modEventBus);
         RodspawnBlockEntities.init(modEventBus);

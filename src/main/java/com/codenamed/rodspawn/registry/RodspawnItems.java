@@ -22,6 +22,7 @@ public class RodspawnItems {
 
     public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () ->
             new SpearItem((new Item.Properties()).rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, SpearItem.createToolProperties()).attributes(SpearItem.createAttributes())));
+
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
