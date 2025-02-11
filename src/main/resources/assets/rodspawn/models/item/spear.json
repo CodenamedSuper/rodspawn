@@ -1,0 +1,6 @@
+{
+  "parent": "rodspawn:item/handheld_spear",
+  "textures": {
+    "layer0": "rodspawn:item/spear"
+  }
+}

@@ -38,6 +38,8 @@ public class Rodspawn
         RodspawnBlockEntities.init(modEventBus);
         RodspawnCreativeTabs.init(modEventBus);
         RodspawnBuiltInLootTables.init();
+        RodspawnModelTemplates.init();
+
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
