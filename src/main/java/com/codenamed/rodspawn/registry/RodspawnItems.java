@@ -17,8 +17,11 @@ public class RodspawnItems {
     public static final DeferredItem<Item> NETHER_DUST = ITEMS.register("nether_dust", () ->
             new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> SPEARHEAD = ITEMS.register("spearhead", () ->
+            new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () ->
-            new MaceItem((new Item.Properties()).rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, SpearItem.createToolProperties()).attributes(SpearItem.createAttributes())));
+            new SpearItem((new Item.Properties()).rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, SpearItem.createToolProperties()).attributes(SpearItem.createAttributes())));
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
