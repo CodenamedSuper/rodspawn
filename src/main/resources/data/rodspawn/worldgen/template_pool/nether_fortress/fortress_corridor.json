@@ -48,6 +48,15 @@
       }
     },
     {
+      "weight": 2,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_corridor/corridor_end",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
       "weight": 3,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_stairs",

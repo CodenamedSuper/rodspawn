@@ -1,7 +1,7 @@
 {
   "type": "minecraft:jigsaw",
   "biomes": "#minecraft:has_structure/nether_fortress",
-  "max_distance_from_center": 80,
+  "max_distance_from_center": 128,
   "size": 14,
   "spawn_overrides": {},
   "start_height": {
