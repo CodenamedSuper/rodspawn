@@ -1,8 +1,9 @@
 {
   "name": "rodspawn:nether_fortress/fortress_corridor",
   "fallback": "minecraft:empty",
-  "elements": [{
-    "weight": 3,
+  "elements": [
+    {
+    "weight": 4,
     "element": {
       "location": "rodspawn:nether_fortress/fortress_corridor/corridor_straight",
       "processors": "minecraft:empty",
@@ -11,7 +12,7 @@
     }
   },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_straight_special",
         "processors": "minecraft:empty",
@@ -20,7 +21,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_straight_farm",
         "processors": "minecraft:empty",
@@ -29,7 +30,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 3,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_branch",
         "processors": "minecraft:empty",
@@ -38,7 +39,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 3,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_corner",
         "processors": "minecraft:empty",
@@ -47,9 +48,36 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 3,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_stairs",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_room/room_spawner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_room/room_spawner_double",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_room/room_spawner_boss",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
