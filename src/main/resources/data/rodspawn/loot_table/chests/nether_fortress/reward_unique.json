@@ -8,10 +8,16 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_ingot",
           "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rib_armor_trim_smithing_template",
+          "weight": 3
         }
       ],
       "rolls": 1.0
     }
+
   ],
   "random_sequence": "rodspawn:chests/nether_fortress/reward_unique"
 }

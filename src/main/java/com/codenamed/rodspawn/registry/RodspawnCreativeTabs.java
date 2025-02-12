@@ -17,7 +17,7 @@ public class RodspawnCreativeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Rodspawn.MOD_ID);
 
     public static final Supplier<CreativeModeTab> RODSPAWN = CREATIVE_MODE_TAB.register("rodspawn",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(Items.SHORT_GRASS))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(RodspawnItems.SPEAR.get()))
                     .title(Component.translatable("creativetab.rodspawn.rodspawn"))
                     .displayItems((itemDisplayParameters, output) -> {
 
