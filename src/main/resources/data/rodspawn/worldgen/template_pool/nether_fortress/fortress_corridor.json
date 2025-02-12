@@ -48,7 +48,7 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 2,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_corridor/corridor_corner_special",
         "processors": "minecraft:empty",
