@@ -24,6 +24,13 @@ public class RodspawnBuiltInLootTables {
     public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_RARE;
     public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_UNIQUE;
 
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_OMINOUS;
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_OMINOUS_COMMON;
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_OMINOUS_RARE;
+    public static final ResourceKey<LootTable> NETHER_FORTRESS_REWARD_OMINOUS_UNIQUE;
+    public static final ResourceKey<LootTable> SPAWNER_NETHER_ITEMS_TO_DROP_WHEN_OMINOUS;
+
+
     private static ResourceKey<LootTable> register(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Rodspawn.MOD_ID, name));
     }
@@ -39,6 +46,11 @@ public class RodspawnBuiltInLootTables {
         NETHER_FORTRESS_REWARD_COMMON = register("chests/nether_fortress/reward_common");
         NETHER_FORTRESS_REWARD_RARE = register("chests/nether_fortress/reward_rare");
         NETHER_FORTRESS_REWARD_UNIQUE = register("chests/nether_fortress/reward_unique");
+        SPAWNER_NETHER_ITEMS_TO_DROP_WHEN_OMINOUS = register("spawners/nether_fortress/items_to_drop_when_ominous");
+        NETHER_FORTRESS_REWARD_OMINOUS_UNIQUE = register("chests/nether_fortress/reward_ominous_unique");
+        NETHER_FORTRESS_REWARD_OMINOUS_RARE = register("chests/nether_fortress/reward_ominous_rare");
+        NETHER_FORTRESS_REWARD_OMINOUS_COMMON = register("chests/nether_fortress/reward_ominous_common");
+        NETHER_FORTRESS_REWARD_OMINOUS = register("chests/nether_fortress/reward_ominous");
     }
 
 }

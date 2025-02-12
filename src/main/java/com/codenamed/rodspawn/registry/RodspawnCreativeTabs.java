@@ -16,9 +16,9 @@ public class RodspawnCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Rodspawn.MOD_ID);
 
-    public static final Supplier<CreativeModeTab> RODSPAWN = CREATIVE_MODE_TAB.register("rodspawn",
+    public static final Supplier<CreativeModeTab> RODSPAWN_FIRE = CREATIVE_MODE_TAB.register("rodspawn_fire",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(RodspawnItems.SPEAR.get()))
-                    .title(Component.translatable("creativetab.rodspawn.rodspawn"))
+                    .title(Component.translatable("creativetab.rodspawn.rodspawn_fire"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(RodspawnBlocks.NETHER_PILLAR);

@@ -48,6 +48,58 @@
     "ominous=false,nether_spawner_state=active,health=0": {
       "model": "rodspawn:block/nether_spawner_active"
     },
+
+
+    "ominous=true,nether_spawner_state=active,health=15": {
+      "model": "rodspawn:block/nether_spawner_active_ominous15"
+    },
+    "ominous=true,nether_spawner_state=active,health=14": {
+      "model": "rodspawn:block/nether_spawner_active_ominous14"
+    },
+    "ominous=true,nether_spawner_state=active,health=13": {
+      "model": "rodspawn:block/nether_spawner_active_ominous13"
+    },
+    "ominous=true,nether_spawner_state=active,health=12": {
+      "model": "rodspawn:block/nether_spawner_active_ominous12"
+    },
+    "ominous=true,nether_spawner_state=active,health=11": {
+      "model": "rodspawn:block/nether_spawner_active_ominous11"
+    },
+    "ominous=true,nether_spawner_state=active,health=10": {
+      "model": "rodspawn:block/nether_spawner_active_ominous10"
+    },
+    "ominous=true,nether_spawner_state=active,health=9": {
+      "model": "rodspawn:block/nether_spawner_active_ominous9"
+    },
+    "ominous=true,nether_spawner_state=active,health=8": {
+      "model": "rodspawn:block/nether_spawner_active_ominous8"
+    },
+    "ominous=true,nether_spawner_state=active,health=7": {
+      "model": "rodspawn:block/nether_spawner_active_ominous7"
+    },
+    "ominous=true,nether_spawner_state=active,health=6": {
+      "model": "rodspawn:block/nether_spawner_active_ominous6"
+    },
+    "ominous=true,nether_spawner_state=active,health=5": {
+      "model": "rodspawn:block/nether_spawner_active_ominous5"
+    },
+    "ominous=true,nether_spawner_state=active,health=4": {
+      "model": "rodspawn:block/nether_spawner_active_ominous4"
+    },
+    "ominous=true,nether_spawner_state=active,health=3": {
+      "model": "rodspawn:block/nether_spawner_active_ominous1"
+    },
+    "ominous=true,nether_spawner_state=active,health=2": {
+      "model": "rodspawn:block/nether_spawner_active_ominous2"
+    },
+    "ominous=true,nether_spawner_state=active,health=1": {
+      "model": "rodspawn:block/nether_spawner_active_ominous1"
+    },
+    "ominous=true,nether_spawner_state=active,health=0": {
+      "model": "rodspawn:block/nether_spawner_active_ominous"
+    },
+
+
     "ominous=false,nether_spawner_state=cooldown": {
       "model": "rodspawn:block/nether_spawner"
     },
@@ -57,11 +109,20 @@
     "ominous=false,nether_spawner_state=inactive": {
       "model": "rodspawn:block/nether_spawner"
     },
+    "ominous=true,nether_spawner_state=inactive": {
+      "model": "rodspawn:block/nether_spawner_inactive_ominous"
+    },
     "ominous=false,nether_spawner_state=waiting_for_players": {
       "model": "rodspawn:block/nether_spawner_active"
     },
+    "ominous=true,nether_spawner_state=waiting_for_players": {
+      "model": "rodspawn:block/nether_spawner_active_ominous"
+    },
     "ominous=false,nether_spawner_state=waiting_for_reward_ejection": {
       "model": "rodspawn:block/nether_spawner_active"
+    },
+    "ominous=true,nether_spawner_state=waiting_for_reward_ejection": {
+      "model": "rodspawn:block/nether_spawner_active_ominous"
     }
   }
 }

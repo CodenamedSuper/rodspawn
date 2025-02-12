@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top_inner_faces",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "rodspawn:block/nether_spawner_bottom",
+    "side": "rodspawn:block/nether_spawner_side_active_ominous_ominous2",
+    "top": "rodspawn:block/nether_spawner_top_active_ominous"
+  }
+}
