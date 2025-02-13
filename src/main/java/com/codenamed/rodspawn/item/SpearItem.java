@@ -91,7 +91,6 @@ public class SpearItem extends Item {
                 float modif = 0.00002f;
                 float burningModif = 0.00001f;
 
-
                 for (Entity target : getFlamethrowedEntities(level, player)) {
                     if (target instanceof LivingEntity targetLivingEntity) {
                         targetLivingEntity.igniteForSeconds(8 + timeCharged * burningModif);

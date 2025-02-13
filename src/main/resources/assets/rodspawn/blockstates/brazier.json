@@ -1,63 +1,127 @@
 {
   "variants": {
-    "facing=east,brazier_state=inactive": {
+    "facing=east,brazier_state=inactive,ominous=false": {
       "model": "rodspawn:block/brazier",
       "y": 90
     },
-    "facing=north,brazier_state=inactive": {
+    "facing=north,brazier_state=inactive,ominous=false": {
       "model": "rodspawn:block/brazier"
     },
-    "facing=south,brazier_state=inactive": {
+    "facing=south,brazier_state=inactive,ominous=false": {
       "model": "rodspawn:block/brazier",
       "y": 180
     },
-    "facing=west,brazier_state=inactive": {
+    "facing=west,brazier_state=inactive,ominous=false": {
       "model": "rodspawn:block/brazier",
       "y": 270
     },
-    "facing=east,brazier_state=active": {
+    "facing=east,brazier_state=active,ominous=false": {
       "model": "rodspawn:block/brazier",
       "y": 90
     },
-    "facing=north,brazier_state=active": {
+    "facing=north,brazier_state=active,ominous=false": {
       "model": "rodspawn:block/brazier"
     },
-    "facing=south,brazier_state=active": {
+    "facing=south,brazier_state=active,ominous=false": {
       "model": "rodspawn:block/brazier",
       "y": 180
     },
-    "facing=west,brazier_state=active": {
+    "facing=west,brazier_state=active,ominous=false": {
       "model": "rodspawn:block/brazier",
       "y": 270
     },
-    "facing=east,brazier_state=ejecting": {
+    "facing=east,brazier_state=ejecting,ominous=false": {
       "model": "rodspawn:block/brazier_lit",
       "y": 90
     },
-    "facing=north,brazier_state=ejecting": {
+    "facing=north,brazier_state=ejecting,ominous=false": {
       "model": "rodspawn:block/brazier_lit"
     },
-    "facing=south,brazier_state=ejecting": {
+    "facing=south,brazier_state=ejecting,ominous=false": {
       "model": "rodspawn:block/brazier_lit",
       "y": 180
     },
-    "facing=west,brazier_state=ejecting": {
+    "facing=west,brazier_state=ejecting,ominous=false": {
       "model": "rodspawn:block/brazier_lit",
       "y": 270
     },
-    "facing=east,brazier_state=unlocking": {
+    "facing=east,brazier_state=unlocking,ominous=false": {
       "model": "rodspawn:block/brazier_lit",
       "y": 90
     },
-    "facing=north,brazier_state=unlocking": {
+    "facing=north,brazier_state=unlocking,ominous=false": {
       "model": "rodspawn:block/brazier_lit"
     },
-    "facing=south,brazier_state=unlocking": {
+    "facing=south,brazier_state=unlocking,ominous=false": {
       "model": "rodspawn:block/brazier_lit",
       "y": 180
     },
-    "facing=west,brazier_state=unlocking": {
+    "facing=west,brazier_state=unlocking,ominous=false": {
       "model": "rodspawn:block/brazier_lit",
+      "y": 270
+    },
+
+
+
+
+    "facing=east,brazier_state=inactive,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous",
+      "y": 90
+    },
+    "facing=north,brazier_state=inactive,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous"
+    },
+    "facing=south,brazier_state=inactive,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous",
+      "y": 180
+    },
+    "facing=west,brazier_state=inactive,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous",
+      "y": 270
+    },
+    "facing=east,brazier_state=active,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous",
+      "y": 90
+    },
+    "facing=north,brazier_state=active,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous"
+    },
+    "facing=south,brazier_state=active,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous",
+      "y": 180
+    },
+    "facing=west,brazier_state=active,ominous=true": {
+      "model": "rodspawn:block/brazier_ominous",
+      "y": 270
+    },
+    "facing=east,brazier_state=ejecting,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous",
+      "y": 90
+    },
+    "facing=north,brazier_state=ejecting,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous"
+    },
+    "facing=south,brazier_state=ejecting,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous",
+      "y": 180
+    },
+    "facing=west,brazier_state=ejecting,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous",
+      "y": 270
+    },
+    "facing=east,brazier_state=unlocking,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous",
+      "y": 90
+    },
+    "facing=north,brazier_state=unlocking,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous"
+    },
+    "facing=south,brazier_state=unlocking,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous",
+      "y": 180
+    },
+    "facing=west,brazier_state=unlocking,ominous=true": {
+      "model": "rodspawn:block/brazier_lit_ominous",
       "y": 270
     }
   }
