@@ -4,6 +4,7 @@ import com.codenamed.rodspawn.registry.RodspawnItemAbilities;
 import com.codenamed.rodspawn.registry.RodspawnItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -17,8 +18,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -28,11 +31,13 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.ItemAbility;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class SpearItem extends Item {
 
@@ -78,41 +83,53 @@ public class SpearItem extends Item {
 
     public void flamethrow(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         if (livingEntity instanceof Player player) {
-            stack.hurtAndBreak(3, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
-            level.playSound((Player)null, player, SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
+
+            if (player.getLookAngle().y < -0.8 && player.onGround()) {
+
+                stack.hurtAndBreak(3, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+                level.playSound((Player)null, player, SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
+                float modif = 0.00002f;
+                float burningModif = 0.00001f;
 
 
-            for (Entity target : getFlamethrowedEntities(level, player)) {
-                if (target instanceof LivingEntity targetLivingEntity) {
-                    targetLivingEntity.igniteForSeconds(12);
-                    hurtEnemy(stack, targetLivingEntity, player);
+                for (Entity target : getFlamethrowedEntities(level, player)) {
+                    if (target instanceof LivingEntity targetLivingEntity) {
+                        targetLivingEntity.igniteForSeconds(8 + timeCharged * burningModif);
+
+                    }
+                }
+
+                recoilPlayer(level, player, timeCharged * modif);
+
+                float flameSpeed = 0.1f;
+                float flameYSpeed = 0.05f;
+
+                for (int i = 0; i < 1; i++) {
+
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), flameSpeed, flameYSpeed, 0);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), flameSpeed, flameYSpeed, flameSpeed);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 0, flameYSpeed, flameSpeed);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), -flameSpeed, flameYSpeed, 0);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), -flameSpeed, flameYSpeed, -flameSpeed);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 0, flameYSpeed, -flameSpeed);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), flameSpeed, flameYSpeed, -flameSpeed);
+                    level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), -flameSpeed, flameYSpeed, flameSpeed);
 
                 }
             }
-
-            float flameSpeed = 0.1f;
-
-            for (int i = 0; i < 1; i++) {
-
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), flameSpeed, 0, 0);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), flameSpeed, 0, flameSpeed);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 0, 0, flameSpeed);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), -flameSpeed, 0, 0);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), -flameSpeed, 0, -flameSpeed);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), 0, 0, -flameSpeed);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), flameSpeed, 0, -flameSpeed);
-                level.addParticle(ParticleTypes.FLAME, player.getX(), player.getY(), player.getZ(), -flameSpeed, 0, flameSpeed);
-
-            }
         }
     }
-
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
             target.igniteForSeconds(6);
 
         return true;
+    }
+
+    public void recoilPlayer(Level level, Player player, float strength) {
+        Vec3 vec3 = player.getDeltaMovement();
+            player.setDeltaMovement(vec3.x, strength, vec3.z);
     }
 
     @Override
