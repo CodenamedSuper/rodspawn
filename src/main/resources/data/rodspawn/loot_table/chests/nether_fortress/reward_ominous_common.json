@@ -17,7 +17,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:emerald",
+          "name": "minecraft:gold_nugget",
           "weight": 5
         },
         {
@@ -33,7 +33,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:wind_charge",
+          "name": "minecraft:fire_charge",
           "weight": 4
         },
         {
@@ -50,7 +50,7 @@
             },
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:strong_slowness"
+              "id": "minecraft:fire_resistance"
             }
           ],
           "name": "minecraft:tipped_arrow",
@@ -69,7 +69,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:diamond",
+          "name": "minecraft:netherite_scrap",
           "weight": 2
         },
         {
@@ -95,5 +95,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:chests/trial_chambers/reward_ominous_common"
+  "random_sequence": "rodspawn:chests/nether_fortress/reward_ominous_common"
 }

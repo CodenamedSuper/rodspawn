@@ -17,6 +17,9 @@ public class RodspawnItems {
     public static final DeferredItem<Item> NETHER_DUST = ITEMS.register("nether_dust", () ->
             new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> OMINOUS_NETHER_DUST = ITEMS.register("ominous_nether_dust", () ->
+            new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> SPEARHEAD = ITEMS.register("spearhead", () ->
             new Item(new Item.Properties()));
 

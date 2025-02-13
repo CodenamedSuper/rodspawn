@@ -6,13 +6,8 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:emerald_block",
+          "name": "minecraft:gold_block",
           "weight": 5
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_block",
-          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -32,7 +27,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:golden_apple",
+          "name": "minecraft:mushroom_stew",
           "weight": 3
         },
         {
@@ -48,7 +43,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "minecraft:diamond_axe",
+          "name": "minecraft:netherite_axe",
           "weight": 3
         },
         {
@@ -64,7 +59,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "minecraft:diamond_chestplate",
+          "name": "minecraft:netherite_chestplate",
           "weight": 3
         },
         {
@@ -88,20 +83,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "function": "minecraft:enchant_randomly",
-              "options": [
-                "minecraft:breach",
-                "minecraft:density"
-              ]
-            }
-          ],
-          "name": "minecraft:book",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
               "add": false,
               "enchantments": {
                 "minecraft:wind_burst": 1.0
@@ -114,11 +95,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond_block"
+          "name": "minecraft:netherite_ingot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:chests/trial_chambers/reward_ominous_rare"
+  "random_sequence": "rodspawn:chests/nether_fortress/reward_ominous_rare"
 }

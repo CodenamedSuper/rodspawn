@@ -6,12 +6,12 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "minecraft:chests/trial_chambers/reward_ominous_rare",
+          "value": "rodspawn:chests/nether_fortress/reward_ominous_rare",
           "weight": 8
         },
         {
           "type": "minecraft:loot_table",
-          "value": "minecraft:chests/trial_chambers/reward_ominous_common",
+          "value": "rodspawn:chests/nether_fortress/reward_ominous_common",
           "weight": 2
         }
       ],
@@ -22,7 +22,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "minecraft:chests/trial_chambers/reward_ominous_common"
+          "value": "rodspawn:chests/nether_fortress/reward_ominous_common"
         }
       ],
       "rolls": {
@@ -42,11 +42,11 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "minecraft:chests/trial_chambers/reward_ominous_unique"
+          "value": "rodspawn:chests/nether_fortress/reward_ominous_unique"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:chests/trial_chambers/reward_ominous"
+  "random_sequence": "rodspawn:chests/nether_fortress/reward_ominous"
 }
