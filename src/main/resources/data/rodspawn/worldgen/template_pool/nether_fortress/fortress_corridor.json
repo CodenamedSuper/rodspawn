@@ -120,7 +120,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "location": "rodspawn:nether_fortress/fortress_room/room_spawner_boss",
         "processors": "minecraft:empty",
