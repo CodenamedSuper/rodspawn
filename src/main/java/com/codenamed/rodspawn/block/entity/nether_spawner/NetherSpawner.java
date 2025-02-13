@@ -75,6 +75,7 @@ public final class NetherSpawner implements IOwnedSpawner {
     private final PlayerDetector.EntitySelector entitySelector;
     private boolean overridePeacefulAndMobSpawnRule;
     private boolean isOminous;
+    private boolean isBoss;
 
     public Codec<NetherSpawner> codec() {
         return RecordCodecBuilder.create((p_338040_) -> {
@@ -84,8 +85,9 @@ public final class NetherSpawner implements IOwnedSpawner {
         });
     }
 
-    public NetherSpawner(NetherSpawner.StateAccessor stateAccessor, PlayerDetector playerDetector, PlayerDetector.EntitySelector entitySelector) {
-        this(NetherSpawnerConfig.DEFAULT, NetherSpawnerConfig.DEFAULT, new NetherSpawnerData(), 36000, 14, stateAccessor, playerDetector, entitySelector);
+    public NetherSpawner(Boolean boss,NetherSpawner.StateAccessor stateAccessor, PlayerDetector playerDetector, PlayerDetector.EntitySelector entitySelector) {
+        this((boss ? NetherSpawnerConfig.BOSS : NetherSpawnerConfig.DEFAULT), (boss ? NetherSpawnerConfig.BOSS : NetherSpawnerConfig.DEFAULT), new NetherSpawnerData(), 36000, 14, stateAccessor, playerDetector, entitySelector);
+        isBoss = boss;
     }
 
     public NetherSpawner(NetherSpawnerConfig normalConfig, NetherSpawnerConfig ominousConfig, NetherSpawnerData data, int targetCooldownLength, int requiredPlayerRange, NetherSpawner.StateAccessor stateAccessor, PlayerDetector playerDetector, PlayerDetector.EntitySelector entitySelector) {
@@ -114,7 +116,13 @@ public final class NetherSpawner implements IOwnedSpawner {
     }
 
     private NetherSpawnerConfig getOminousConfigForSerialization() {
-        return !this.ominousConfig.equals(this.normalConfig) ? this.ominousConfig : NetherSpawnerConfig.DEFAULT;
+
+        if (isBoss) {
+            return !this.ominousConfig.equals(this.normalConfig) ? this.ominousConfig : NetherSpawnerConfig.BOSS;
+        }
+        else {
+            return !this.ominousConfig.equals(this.normalConfig) ? this.ominousConfig : NetherSpawnerConfig.DEFAULT;
+        }
     }
 
     public void applyOminous(ServerLevel level, BlockPos pos) {

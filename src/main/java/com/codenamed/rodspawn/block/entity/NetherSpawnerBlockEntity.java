@@ -32,7 +32,7 @@ public class NetherSpawnerBlockEntity extends BlockEntity implements Spawner, Ne
         super(RodspawnBlockEntities.NETHER_SPAWNER.get(), pos, state);
         PlayerDetector playerdetector = PlayerDetector.NO_CREATIVE_PLAYERS;
         PlayerDetector.EntitySelector playerdetector$entityselector = EntitySelector.SELECT_FROM_LEVEL;
-        this.netherSpawner = new NetherSpawner(this, playerdetector, playerdetector$entityselector);
+        this.netherSpawner = new NetherSpawner(state.getValue(NetherSpawnerBlock.BOSS),this, playerdetector, playerdetector$entityselector);
     }
 
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {

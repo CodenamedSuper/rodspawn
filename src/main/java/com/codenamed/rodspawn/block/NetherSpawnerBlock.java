@@ -40,6 +40,7 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
     public static final MapCodec<NetherSpawnerBlock> CODEC = simpleCodec(NetherSpawnerBlock::new);
     public static final EnumProperty<NetherSpawnerState> STATE;
     public static final BooleanProperty OMINOUS;
+    public static final BooleanProperty BOSS;
     public static final IntegerProperty HEALTH;
 
     public static final int MAX_HEALTH = 15;
@@ -50,11 +51,11 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
 
     public NetherSpawnerBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(HEALTH, MAX_HEALTH).setValue(STATE, NetherSpawnerState.INACTIVE)).setValue(OMINOUS, false));
+        this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(HEALTH, MAX_HEALTH).setValue(BOSS, false).setValue(STATE, NetherSpawnerState.INACTIVE)).setValue(OMINOUS, false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{STATE, OMINOUS, HEALTH});
+        builder.add(new Property[]{STATE, OMINOUS, HEALTH, BOSS});
     }
 
     protected RenderShape getRenderShape(BlockState p_312710_) {
@@ -86,16 +87,24 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
 
         if (state.getValue(HEALTH) < 1) return;
 
-        level.setBlock(pos, state.setValue(HEALTH, state.getValue(HEALTH ) - dmg), 2);
+        level.setBlock(pos, state.setValue(HEALTH, state.getValue(HEALTH) - dmg), 2);
 
         RandomSource randomsource = level.getRandom();
-        level.playSound((Player)null, pos, SoundEvents.TRIAL_SPAWNER_HIT, SoundSource.BLOCKS, randomsource.nextFloat() + 0.75F, randomsource.nextFloat() + 0.5F);
+        level.playSound((Player) null, pos, SoundEvents.TRIAL_SPAWNER_HIT, SoundSource.BLOCKS, randomsource.nextFloat() + 0.75F, randomsource.nextFloat() + 0.5F);
 
-        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 0,0);
-        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX() + 1, pos.getY() + 1, pos.getZ(), 0, 0,0);
-        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1, 0, 0,0);
-        level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX(), pos.getY() + 1, pos.getZ() + 1, 0, 0,0);
+        if (!state.getValue(OMINOUS)) {
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 0, 0);
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX() + 1, pos.getY() + 1, pos.getZ(), 0, 0, 0);
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1, 0, 0, 0);
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER, pos.getX(), pos.getY() + 1, pos.getZ() + 1, 0, 0, 0);
 
+        }
+        else {
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 0,0);
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS, pos.getX() + 1, pos.getY() + 1, pos.getZ(), 0, 0,0);
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1, 0, 0,0);
+            level.addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS, pos.getX(), pos.getY() + 1, pos.getZ() + 1, 0, 0,0);
+        }
     }
 
     @Nullable
@@ -123,5 +132,6 @@ public class NetherSpawnerBlock extends BaseEntityBlock {
         STATE = RodspawnBlockstateProperties.NETHER_SPAWNER_STATE;
         OMINOUS = BlockStateProperties.OMINOUS;
         HEALTH = RodspawnBlockstateProperties.NETHER_SPAWNER_HEALTH;
+        BOSS = RodspawnBlockstateProperties.NETHER_SPAWNER_BOSS;
     }
 }
