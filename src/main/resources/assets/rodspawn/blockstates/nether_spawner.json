@@ -103,6 +103,9 @@
     "ominous=false,nether_spawner_state=cooldown": {
       "model": "rodspawn:block/nether_spawner"
     },
+    "ominous=true,nether_spawner_state=cooldown": {
+      "model": "rodspawn:block/nether_spawner_inactive_ominous"
+    },
     "ominous=false,nether_spawner_state=ejecting_reward": {
       "model": "rodspawn:block/nether_spawner_ejecting_reward"
     },
