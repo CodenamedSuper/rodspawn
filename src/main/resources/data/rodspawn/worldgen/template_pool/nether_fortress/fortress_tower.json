@@ -4,12 +4,21 @@
   "elements": [{
     "weight": 1,
     "element": {
-      "location": "rodspawn:nether_fortress/fortress_tower/tower",
+      "location": "rodspawn:nether_fortress/fortress_tower/tower_special",
       "processors": "minecraft:empty",
       "projection": "rigid",
       "element_type": "minecraft:single_pool_element"
     }
-  }
+  },
+    {
+      "weight": 3,
+      "element": {
+        "location": "rodspawn:nether_fortress/fortress_tower/tower",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
   ]
 }
 
