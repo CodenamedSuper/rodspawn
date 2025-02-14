@@ -1,7 +1,9 @@
 package com.codenamed.rodspawn;
 
 
+import com.codenamed.rodspawn.entity.client.wildfire.WildfireRenderer;
 import com.codenamed.rodspawn.registry.*;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
@@ -37,6 +39,7 @@ public class Rodspawn
         RodspawnItems.init(modEventBus);
         RodspawnBlocks.init(modEventBus);
         RodspawnBlockEntities.init(modEventBus);
+        RodspawnEntities.init(modEventBus);
         RodspawnCreativeTabs.init(modEventBus);
         RodspawnBuiltInLootTables.init();
         RodspawnModelTemplates.init();
@@ -63,7 +66,7 @@ public class Rodspawn
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(RodspawnEntities.WILDFIRE.get(), WildfireRenderer::new);
         }
 
         @SubscribeEvent

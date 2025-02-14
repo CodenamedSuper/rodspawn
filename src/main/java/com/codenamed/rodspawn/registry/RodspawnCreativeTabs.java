@@ -26,8 +26,11 @@ public class RodspawnCreativeTabs {
                         output.accept(RodspawnBlocks.NETHER_SPAWNER);
                         output.accept(RodspawnBlocks.BRAZIER);
                         output.accept(RodspawnItems.NETHER_DUST);
+                        output.accept(RodspawnItems.OMINOUS_NETHER_DUST);
                         output.accept(RodspawnItems.SPEARHEAD);
                         output.accept(RodspawnItems.SPEAR);
+                        output.accept(RodspawnItems.WILDFIRE_SPAWN_EGG);
+
 
                     }).build());
 
