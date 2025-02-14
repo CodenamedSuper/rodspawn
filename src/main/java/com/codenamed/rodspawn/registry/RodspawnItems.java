@@ -22,10 +22,10 @@ public class RodspawnItems {
             new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> SPEARHEAD = ITEMS.register("spearhead", () ->
-            new Item(new Item.Properties()));
+            new Item(new Item.Properties().rarity(Rarity.EPIC)));
 
     public static final DeferredItem<Item> WILDFIRE_SPAWN_EGG = ITEMS.register("wildfire_spawn_egg", () ->
-            new DeferredSpawnEggItem(RodspawnEntities.WILDFIRE, 0xffb828, 0x4e2930, new Item.Properties()));
+            new DeferredSpawnEggItem(RodspawnEntities.WILDFIRE, 0x4e2930, 0xffb828, new Item.Properties()));
 
     public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () ->
             new SpearItem((new Item.Properties()).rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, SpearItem.createToolProperties()).attributes(SpearItem.createAttributes())));
