@@ -10,6 +10,9 @@
     "ominous=false,nether_spawner_state=ejecting_reward": {
       "model": "rodspawn:block/nether_spawner_ejecting_reward"
     },
+    "ominous=true,nether_spawner_state=ejecting_reward": {
+      "model": "rodspawn:block/nether_spawner_ejecting_reward_ominous"
+    },
     "ominous=false,nether_spawner_state=inactive": {
       "model": "rodspawn:block/nether_spawner"
     },
