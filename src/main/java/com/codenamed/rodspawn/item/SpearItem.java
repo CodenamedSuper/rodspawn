@@ -25,6 +25,7 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
@@ -67,13 +68,16 @@ public class SpearItem extends Item {
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
-        flamethrow(stack, level, livingEntity, timeCharged);
+        burnAttack(stack, level, livingEntity, timeCharged);
     }
 
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 72000;
     }
 
+    public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
+        return repairCandidate.is(Items.BLAZE_ROD);
+    }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
@@ -81,7 +85,7 @@ public class SpearItem extends Item {
         return InteractionResultHolder.consume(player.getItemInHand(usedHand));
     }
 
-    public void flamethrow(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
+    public void burnAttack(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         if (livingEntity instanceof Player player) {
 
             if (player.getLookAngle().y < -0.8 && player.onGround()) {
