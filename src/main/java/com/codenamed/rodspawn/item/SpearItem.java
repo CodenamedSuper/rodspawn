@@ -92,17 +92,16 @@ public class SpearItem extends Item {
 
                 stack.hurtAndBreak(3, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
                 level.playSound((Player)null, player, SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
-                float modif = 0.00002f;
-                float burningModif = 0.00001f;
+
 
                 for (Entity target : getBurntEntities(level, player)) {
                     if (target instanceof LivingEntity targetLivingEntity) {
-                        targetLivingEntity.igniteForSeconds(8 + timeCharged * burningModif);
+                        targetLivingEntity.igniteForSeconds((8 + getBurnAttackStrength(timeCharged) * 4));
 
                     }
                 }
 
-                recoilPlayer(level, player, timeCharged * modif);
+                recoilPlayer(level, player, getBurnAttackStrength(timeCharged) / 2);
 
                 float flameSpeed = 0.1f;
                 float flameYSpeed = 0.05f;
@@ -128,6 +127,16 @@ public class SpearItem extends Item {
             target.igniteForSeconds(6);
 
         return true;
+    }
+
+    public float getBurnAttackStrength(float timeCharged) {
+        if (timeCharged == 71999) {
+            return  1;
+        }
+        else if (timeCharged < 71999) {
+            return 2;
+        }
+        return 0;
     }
 
     public void recoilPlayer(Level level, Player player, float strength) {
