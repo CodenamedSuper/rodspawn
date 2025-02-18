@@ -44,7 +44,7 @@ public class SpearItem extends Item {
 
     public static final ResourceLocation BASE_BURNING_TIME_ID = ResourceLocation.withDefaultNamespace("base_burning_time");
     public static final ResourceLocation BASE_ENTITY_INTERACTION_RANGE_ID = ResourceLocation.withDefaultNamespace("base_entity_interaction_range");
-    public static final int FLAMETHROW_RANGE = 4;
+    public static final int BURN_ATTACK_RANGE = 3;
 
     public SpearItem(Properties properties) {
         super(properties);
@@ -157,8 +157,8 @@ public class SpearItem extends Item {
     public  List<Entity> getBurntEntities(Level level, Player player) {
 
         BlockPos pos = player.getOnPos();
-        BlockPos start = new BlockPos(pos.getX() - FLAMETHROW_RANGE, pos.getY(), pos.getZ() - FLAMETHROW_RANGE);
-        BlockPos end = new BlockPos(pos.getX() + FLAMETHROW_RANGE, pos.getY() + FLAMETHROW_RANGE, pos.getZ() + FLAMETHROW_RANGE);
+        BlockPos start = new BlockPos(pos.getX() - BURN_ATTACK_RANGE, pos.getY(), pos.getZ() - BURN_ATTACK_RANGE);
+        BlockPos end = new BlockPos(pos.getX() + BURN_ATTACK_RANGE, pos.getY() + BURN_ATTACK_RANGE, pos.getZ() + BURN_ATTACK_RANGE);
 
 
         return  level.getEntities(player, new AABB(start.getCenter(), end.getCenter()), Entity::isAlive);
