@@ -148,6 +148,11 @@ public class Wildfire extends Monster {
         return ((Byte)this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
     }
 
+    @Override
+    protected int calculateFallDamage(float fallDistance, float damageMultiplier) {
+        return 0;
+    }
+
     void setCharged(boolean charged) {
         byte b0 = (Byte)this.entityData.get(DATA_FLAGS_ID);
         if (charged) {
