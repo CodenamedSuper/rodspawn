@@ -136,6 +136,11 @@ public class SpearItem extends Item {
     }
 
     @Override
+    public int getEnchantmentValue(ItemStack stack) {
+        return 15;
+    }
+
+    @Override
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
         return RodspawnItemAbilities.DEFAULT_SPEAR_ACTIONS.contains(itemAbility);
     }
