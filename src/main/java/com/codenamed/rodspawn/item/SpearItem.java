@@ -95,7 +95,7 @@ public class SpearItem extends Item {
                 float modif = 0.00002f;
                 float burningModif = 0.00001f;
 
-                for (Entity target : getFlamethrowedEntities(level, player)) {
+                for (Entity target : getBurntEntities(level, player)) {
                     if (target instanceof LivingEntity targetLivingEntity) {
                         targetLivingEntity.igniteForSeconds(8 + timeCharged * burningModif);
 
@@ -140,7 +140,7 @@ public class SpearItem extends Item {
         return RodspawnItemAbilities.DEFAULT_SPEAR_ACTIONS.contains(itemAbility);
     }
 
-    public  List<Entity> getFlamethrowedEntities(Level level, Player player) {
+    public  List<Entity> getBurntEntities(Level level, Player player) {
 
         BlockPos pos = player.getOnPos();
         BlockPos start = new BlockPos(pos.getX() - FLAMETHROW_RANGE, pos.getY(), pos.getZ() - FLAMETHROW_RANGE);

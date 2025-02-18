@@ -10,5 +10,8 @@
   "item.rodspawn.spearhead": "Spearhead",
 
   "block.rodspawn.gilded_nether_bricks": "Gilded Nether Bricks",
-  "block.rodspawn.nether_pillar": "Nether Pillar"
+  "block.rodspawn.nether_pillar": "Nether Pillar",
+
+  "entity.rodspawn.wildfire": "Wildfire"
+
 }
